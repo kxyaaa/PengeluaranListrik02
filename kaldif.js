@@ -15,8 +15,23 @@ const defaultWatt = {
   "Rice Cooker": 300
 };
 
-function add(n='', w=0, j=0, h=0){
-  data.push({nama:n, watt:w, jumlah:j, jam:h, custom:false});
+function add(n = '', w = 0, j = 0, h = 0) {
+  // Validasi: kalau ada nilai negatif, langsung stop
+  if (w < 0 || j < 0 || h < 0) {
+    alert("Nilai tidak boleh negatif!");
+    return;
+  }
+
+  // Paksa nilai jadi mutlak (opsional, biar aman)
+  let watt   = Math.abs(parseFloat(w));
+  let jumlah = Math.abs(parseInt(j));
+  let jam    = Math.abs(parseFloat(h));
+
+  if (isNaN(watt)) watt = 0;
+  if (isNaN(jumlah)) jumlah = 0;
+  if (isNaN(jam)) jam = 0;
+
+  data.push({ nama: n, watt: watt, jumlah: jumlah, jam: jam, custom: false });
   render();
 }
 
