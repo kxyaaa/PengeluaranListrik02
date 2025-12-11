@@ -1,0 +1,400 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BACKGROUND (Gray Mist + Navy → Pastel Blue) ===== */
+body {
+  margin: 0;
+  background: 
+    radial-gradient(110% 60% at 50% 0%, rgba(200,203,210,0.45), transparent 70%),
+    linear-gradient(160deg, #0f1c2e 0%, #1a3552 35%, #4d78b6 70%, #dce8ff 100%);
+  color: #1a1d21;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1080px;
+  margin: auto;
+  padding: 28px;
+}
+
+/* ===== TITLES ===== */
+h1 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 32px;
+  background: linear-gradient(90deg, #e7edff, #ffffff, #cfd4dd);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+
+.sub {
+  background: linear-gradient(90deg, #e7edff, #ffffff, #cfd4dd);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin: 0 0 20px;
+  font-size: 15px;
+}
+
+/* ===== CARD ===== */
+.card {
+  background: #ffffffcc;
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid #e1e3e8;
+  box-shadow: 0 6px 20px rgba(0,0,0,.05);
+  margin: 18px 0;
+  backdrop-filter: blur(6px);
+  transition: all .25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.08);
+}
+
+/* ===== INPUTS ===== */
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d2d4d9;
+  border-radius: 12px;
+  margin-top: 8px;
+  background: #f8f9fb;
+  transition: .25s;
+}
+input:focus, select:focus {
+  border-color: #5e8fd6;
+  box-shadow: 0 0 8px rgba(94,143,214,.25);
+  outline: none;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f3238;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  margin-top: 16px;
+  border-collapse: collapse;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.05);
+}
+
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid #eceef1;
+  font-size: 14px;
+}
+
+/* Header Gradient — navy → soft blue */
+th {
+  background: linear-gradient(120deg, #0f1c2e, #2a3d59, #6a8dc7);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: .3px;
+}
+
+tr:hover td {
+  background: #eff4ff;
+  transition: .25s;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  background: linear-gradient(135deg, #1a3552, #4c75b5);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 14px;
+  font-weight: 600;
+  transition: all .25s ease;
+}
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(30,55,83,.3);
+}
+
+/* Outline Button */
+.outline {
+  background: transparent;
+  color: #1a3552;
+  border: 2px solid #1a3552;
+  margin-left: 8px;
+}
+.outline:hover {
+  background: #1a3552;
+  color: #fff;
+}
+
+/* ===== STATS / BOXES ===== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.box {
+  background: #ffffffcc;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #e3e5eb;
+  backdrop-filter: blur(6px);
+  transition: all .25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+.box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+.num {
+  font-weight: 700;
+  font-size: 22px;
+  background: linear-gradient(90deg, #1a3552, #4d75b3);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 8px;
+}
+
+/* ==== HELP BUTTON ==== */
+.help-button {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    width: 46px;
+    height: 46px;
+    background: #d2d4d9;
+    color: #000000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: 0.2s ease;
+    z-index: 9999;
+}
+
+.help-button:hover {
+    transform: scale(1.12);
+}
+
+/* ==== POPUP HELP ==== */
+.help-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.help-content {
+    background: #fff;
+    width: 320px;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    animation: popupFade 0.25s ease;
+}
+
+.help-content button {
+    margin-top: 14px;
+    padding: 10px 18px;
+    background: #aaaaaa;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Animasi */
+@keyframes popupFade {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== KOLOM AKSI DI TABEL ===== */
+table th.aksi, table td.aksi {
+  width: 120px;        /* lebar pas untuk tombol Edit + Hapus */
+  text-align: center;  /* tombol rapi di tengah */
+  white-space: nowrap; /* cegah teks turun ke bawah */
+}
+
+table td.aksi button {
+  margin: 2px;
+  padding: 6px 10px;   /* tombol lebih kecil */
+  font-size: 12px;     /* font tombol lebih kecil */
+}
+
+/* ===== TOMBOL HAPUS TRANSPARAN ===== */
+button.hapus {
+  background: transparent;
+  color: #1a3552;            /* merah biar tegas */
+  border: 2px solid #1a3552; /* outline merah */
+  margin-left: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+button.hapus:hover {
+  background: #1a3552;
+  color: #fff;
+}
+
+/* ===== RESPONSIVE UNTUK MOBILE ===== */
+@media (max-width: 768px) {
+  .container {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .sub {
+    font-size: 13px;
+  }
+
+  /* Tombol lebih kecil */
+  button {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  /* Tabel scroll horizontal */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  /* Kolom aksi lebih kecil */
+  table th.aksi, table td.aksi {
+    width: 90px;
+  }
+
+  /* Stats box grid jadi 1 kolom */
+  .stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== HELP LIST ===== */
+.help-list {
+  text-align: left;
+  margin: 0;
+  padding: 0 0 0 18px;
+  list-style: none;
+}
+
+.help-list li {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+}
+
+.help-content {
+  max-height: 70vh;   /* maksimal 70% tinggi layar */
+  overflow-y: auto;   /* kalau panjang, bisa scroll */
+}
+
+/* ===== STEP ACCORDION STYLE ===== */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.step {
+  border: 1px solid #e1e3e8;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,.05);
+}
+
+.step-header {
+  width: 100%;
+  background: linear-gradient(135deg, #1a3552, #4c75b5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.step-header .num {
+  background: #fff;
+  color: #1a3552;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.step-body {
+  display: none;
+  padding: 12px 16px;
+  background: #f8f9fb;
+  font-size: 13px;
+  line-height: 1.4;
+  animation: slideDown 0.3s ease;
+}
+
+/* Animasi muncul */
+@keyframes slideDown {
+  from {opacity: 0; transform: translateY(-5px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.step-body {
+  display: none;
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  animation: slideDown 0.3s ease;
+  border-top: 1px solid #eceef1;
+
+  /* Background lebih menarik */
+  background: linear-gradient(135deg, #fdfbfb, #ebedee); /* abu pastel */
+  /* bisa diganti variasi lain: */
+  /* background: linear-gradient(135deg, #e0f7fa, #f1f8e9);  biru muda → hijau pastel */
+  /* background: linear-gradient(135deg, #fff3e0, #fce4ec);  peach → pink pastel */
+}
