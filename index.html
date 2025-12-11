@@ -42,9 +42,21 @@
 
     <table>
       <thead>
-        <tr>
-          <th>Nama</th><th>Daya (W)</th><th>Jumlah</th><th>Jam/Hari</th><th>Aksi</th>
-        </tr>
+<div class="form-row">
+  <label for="nama">Nama Peralatan</label>
+  <input type="text" id="nama" name="nama">
+</div>
+<div class="form-row">
+  <label for="watt">Daya (Watt)</label>
+  <input type="number" id="watt" name="watt">
+</div>
+<div class="form-row">
+  <label for="jumlah">Jumlah</label>
+  <input type="number" id="jumlah" name="jumlah">
+</div>
+<div class="form-row">
+  <button type="submit">+ Tambah</button>
+</div>
       </thead>
       <tbody id="tabel"></tbody>
     </table>
@@ -53,7 +65,7 @@
   </div>
 
   <!-- Log Harian -->
-  <div class="card">
+  <div class="card" class="table-wrapper">
     <strong>Catatan Pemakaian Harian</strong>
 
     <table>
@@ -144,3 +156,4 @@
 </body>
 
 </html>
+
