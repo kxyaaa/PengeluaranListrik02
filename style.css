@@ -397,54 +397,5 @@ button.hapus:hover {
   /* bisa diganti variasi lain: */
   /* background: linear-gradient(135deg, #e0f7fa, #f1f8e9);  biru muda → hijau pastel */
   /* background: linear-gradient(135deg, #fff3e0, #fce4ec);  peach → pink pastel */
-
 }
 
-/* ===== RESPONSIVE FORM ===== */
-@media (max-width: 768px) {
-  .form-row {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    margin-bottom: 12px;
-  }
-
-  .form-row label {
-    font-size: 13px;
-  }
-
-  .form-row input, .form-row select {
-    width: 100%;
-    padding: 8px;
-    font-size: 13px;
-  }
-
-  .form-row button {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-  }
-}
-
-/* ===== RESPONSIVE TABLE ===== */
-@media (max-width: 768px) {
-  .table-wrapper {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  table {
-    min-width: 480px; /* biar tetap readable */
-    font-size: 12px;
-  }
-
-  th, td {
-    padding: 6px;
-  }
-
-  .aksi button {
-    padding: 6px 8px;
-    font-size: 12px;
-    margin: 2px;
-  }
-}
