@@ -264,6 +264,52 @@ button.hapus:hover {
 
 /* ===== RESPONSIVE UNTUK MOBILE ===== */
 @media (max-width: 768px) {
+  .container {
+    padding: 14px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .sub {
+    font-size: 13px;
+  }
+
+  /* Tombol lebih kecil */
+  button {
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px; /* biar nggak nempel ke tabel */
+  }
+
+  /* Tabel scroll horizontal */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th, td {
+    padding: 8px;
+    font-size: 12px;
+    white-space: nowrap;   /* cegah teks turun ke bawah */
+    min-width: 80px;       /* biar kolom nggak terlalu sempit */
+  }
+
+  /* Kolom aksi lebih kecil */
+  table th.aksi, table td.aksi {
+    width: 90px;
+  }
+
+  /* Stats box grid jadi 1 kolom */
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  /* === SCROLL HORIZONTAL UNTUK STEP CARD DI HELP POPUP === */
   .steps {
     display: flex;
     flex-wrap: nowrap;
