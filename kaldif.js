@@ -16,7 +16,7 @@ const defaultWatt = {
 };
 
 function add(n = '', w = 0, j = 0, h = 0) {
-  // Validasi: kalau ada nilai negatif, langsung stop
+  // Validasi: kalau ada niblai negatif, langsung stop
   if (w < 0 || j < 0 || h < 0) {
     alert("Nilai tidak boleh negatif!");
     return;
@@ -64,9 +64,9 @@ function render(){
              placeholder="Nama barang..." 
              onchange="upd(${i},'nama',this.value)">` : ""}
         </td>
-        <td><input type="number" value="${d.watt}" onchange="upd(${i},'watt',this.value)"></td>
-        <td><input type="number" value="${d.jumlah}" onchange="upd(${i},'jumlah',this.value)"></td>
-        <td><input type="number" value="${d.jam}" onchange="upd(${i},'jam',this.value)"></td>
+        <td><input type="number" min="0" value="${d.watt}" onchange="upd(${i},'watt',this.value)"></td>
+        <td><input type="number" min="0" value="${d.jumlah}" onchange="upd(${i},'jumlah',this.value)"></td>
+        <td><input type="number" min="0" value="${d.jam}" onchange="upd(${i},'jam',this.value)"></td>
         <td><button onclick="hapus(${i})" class="outline">Hapus</button></td>
       </tr>`;
   });
@@ -88,7 +88,12 @@ function handleSelect(i, val){
 }
 
 function upd(i,f,v){
-  data[i][f] = (f==="nama") ? v : Number(v);
+  let val = Number(v);
+  if(val < 0){
+    showToast("⚠️ Nilai tidak boleh negatif!");
+    val = Math.abs(val); // otomatis jadi mutlak
+  }
+  data[i][f] = (f==="nama") ? v : val;
 }
 
 function hapus(i){
@@ -314,7 +319,7 @@ helpPopup.addEventListener("click", (e) => {
     if (e.target === helpPopup) {
         helpPopup.style.display = "none";
     }
-});
+}); 
 
 function generatePDF() {
   const { jsPDF } = window.jspdf;
@@ -457,3 +462,13 @@ document.querySelectorAll(".step-header").forEach(btn=>{
     body.style.display = body.style.display === "block" ? "none" : "block";
   });
 });
+
+function showToast(msg) {
+  const toast = document.getElementById("toast");
+  toast.innerText = msg;
+  toast.classList.add("show");
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000); // hilang setelah 3 detik
+}
+
