@@ -262,54 +262,27 @@ button.hapus:hover {
   color: #fff;
 }
 
-/* ===== RESPONSIVE UNTUK MOBILE ===== */
 @media (max-width: 768px) {
+  /* Container tetap padding kecil */
   .container {
     padding: 14px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .sub {
-    font-size: 13px;
-  }
-
-  /* Tombol lebih kecil */
-  button {
-    padding: 8px 12px;
-    font-size: 12px;
-    border-radius: 8px;
-    margin-bottom: 8px; /* biar nggak nempel ke tabel */
   }
 
   /* Tabel scroll horizontal */
   table {
     display: block;
-    width: 100%;
+    width: auto; /* jangan paksa 100% */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
   th, td {
-    padding: 8px;
-    font-size: 12px;
-    white-space: nowrap;   /* cegah teks turun ke bawah */
-    min-width: 80px;       /* biar kolom nggak terlalu sempit */
+    white-space: nowrap;
+    min-width: 80px;
+    font-size: 14px; /* tetap ukuran desktop */
   }
 
-  /* Kolom aksi lebih kecil */
-  table th.aksi, table td.aksi {
-    width: 90px;
-  }
-
-  /* Stats box grid jadi 1 kolom */
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  /* === SCROLL HORIZONTAL UNTUK STEP CARD DI HELP POPUP === */
+  /* Step card scroll horizontal */
   .steps {
     display: flex;
     flex-wrap: nowrap;
@@ -319,8 +292,20 @@ button.hapus:hover {
 
   .step {
     flex: 0 0 auto;
-    width: 280px;       /* ukuran tetap */
-    margin-right: 12px; /* jarak antar card */
+    width: 320px; /* ukuran desktop */
+    margin-right: 14px;
+  }
+
+  /* Stats box tetap grid 2 kolom */
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tombol tetap ukuran desktop */
+  button {
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 12px;
   }
 }
 
