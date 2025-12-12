@@ -264,46 +264,17 @@ button.hapus:hover {
 
 /* ===== RESPONSIVE UNTUK MOBILE ===== */
 @media (max-width: 768px) {
-  .container {
-    padding: 14px;
-  }
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .sub {
-    font-size: 13px;
-  }
-
-  /* Tombol lebih kecil */
-  button {
-    padding: 8px 12px;
-    font-size: 12px;
-    border-radius: 8px;
-  }
-
-  /* Tabel scroll horizontal */
-  table {
-    display: block;
-    width: 100%;
+  .steps {
+    display: flex;
+    flex-wrap: nowrap;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
   }
 
-  th, td {
-    padding: 8px;
-    font-size: 12px;
-  }
-
-  /* Kolom aksi lebih kecil */
-  table th.aksi, table td.aksi {
-    width: 90px;
-  }
-
-  /* Stats box grid jadi 1 kolom */
-  .stats {
-    grid-template-columns: 1fr;
+  .step {
+    flex: 0 0 auto;
+    width: 280px;       /* ukuran tetap */
+    margin-right: 12px; /* jarak antar card */
   }
 }
 
@@ -399,3 +370,31 @@ button.hapus:hover {
   /* background: linear-gradient(135deg, #fff3e0, #fce4ec);  peach → pink pastel */
 }
 
+#toast {
+  position: fixed;
+  top: 20px;        /* posisi di kanan atas */
+  right: 20px;
+  min-width: 280px;
+  background: #e74c3c; /* merah tegas untuk warning */
+  color: #fff;
+  padding: 16px 22px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-20px); /* animasi dari atas */
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.steps .step:first-child .step-header {
+  text-align: center;   /* teks di tengah */
+  font-weight: bold;    /* biar lebih tegas */
+  font-size: 18px;      /* opsional, biar lebih besar */
+  justify-content: center; /* kalau pakai flex */
+}
