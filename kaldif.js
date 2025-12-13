@@ -66,7 +66,7 @@ function render(){
         </td>
         <td><input type="number" min="0" value="${d.watt}" onchange="upd(${i},'watt',this.value)"></td>
         <td><input type="number" min="0" value="${d.jumlah}" onchange="upd(${i},'jumlah',this.value)"></td>
-        <td><input type="number" min="0" value="${d.jam}" onchange="upd(${i},'jam',this.value)"></td>
+        <td><input type="text" placeholder="hh:mm"value="${convertJamToText(d.jam)}"onchange="updWaktu(${i}, this.value)"></td>
         <td><button onclick="hapus(${i})" class="outline">Hapus</button></td>
       </tr>`;
   });
@@ -206,7 +206,7 @@ function renderLog(){
       <td>${l.nama}</td>
       <td>${l.watt}</td>
       <td>${l.jumlah}</td>
-      <td>${l.jam}</td>
+      <td>${convertJamToText(l.jam)}</td>
       <td class="aksi">
         <button onclick="editLog(${i})">Edit</button>
         <button class="hapus" onclick="hapusLog(${i})">Hapus</button>
@@ -361,7 +361,7 @@ function generatePDF() {
     l.nama,
     `${l.watt} W`,
     l.jumlah,
-    `${l.jam} jam`
+    convertJamToText(l.jam)
   ]);
 
   doc.autoTable({
@@ -470,5 +470,18 @@ function showToast(msg) {
   setTimeout(() => {
     toast.classList.remove("show");
   }, 3000); // hilang setelah 3 detik
+}
+
+function convertJamToText(jamDecimal){
+  let jam = Math.floor(jamDecimal);
+  let menit = Math.round((jamDecimal % 1) * 60);
+  return `${String(jam).padStart(2,"0")}:${String(menit).padStart(2,"0")}`;
+}
+
+function updWaktu(i, val){
+  let [jam, menit] = val.split(":").map(Number);
+  if(isNaN(jam)) jam = 0;
+  if(isNaN(menit)) menit = 0;
+  data[i].jam = jam + (menit/60); // simpan sebagai jam desimal
 }
 
