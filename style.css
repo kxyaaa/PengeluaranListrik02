@@ -801,16 +801,3 @@ button:hover::after {
   }
 }
 
-/* ===== RAPAPI TOMBOL HAPUS TANPA UBAH LAYOUT ===== */
-@media (max-width: 480px) {
-
-  /* khusus tombol hapus di tabel input */
-  #tabel td[data-label="Aksi"] button {
-    width: auto !important;   /* kunci: jangan full */
-    min-width: 70px;
-    padding: 6px 10px;
-    font-size: 12px;
-    line-height: 1.2;
-  }
-
-}
