@@ -667,3 +667,7 @@ function saranNyata() {
     `💡 ${target.nama} boros → tips nyata:\n• ${tips.join("\n• ")}`
   );
 }
+
+
+
+
