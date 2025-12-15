@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Energy Optimizer ⚡</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="container">
+  
+  <h1>Energy Optimizer ⚡</h1>
+  <p class="sub">Hitung & optimalkan pengeluaran listrik bulanan Anda.</p>
+
+  <!-- Input Tarif -->
+  <div class="card">
+    <label>Tarif Listrik</label>
+    <select id="tarif">
+      <option value="415.00">450 VA (Rp 415,00/kWh)</option>
+      <option value="1352.00">900 VA (Rp 1352,00/kWh)</option>
+      <option value="1444.70">1300 VA (Rp 1444,70/kWh)</option>
+      <option value="1444.70">2200 VA (Rp 1444,70/kWh)</option>
+      <option value="1699.53">3500 - 5500 VA (Rp 1699,53/kWh)</option>
+    </select>
+  </div>
+
+  <!-- Input Tabel Peralatan -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <strong>Daftar Peralatan</strong>
+      <div>
+        <button class="outline" onclick="contoh()">+ Contoh</button>
+        <button onclick="add()">+ Tambah</button>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th><th>Daya (W)</th><th>Jumlah</th><th>Waktu</th><th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="tabel"></tbody>
+    </table>
+
+    <button onclick="catatHari()">Catat</button>
+  </div>
+
+  <!-- Log Harian -->
+  <div class="card">
+    <strong>Catatan Pemakaian Harian</strong>
+
+    <table>
+      <thead>
+        <tr><th>Tanggal</th><th>Nama</th><th>Daya (W)</th><th>Jumlah</th><th>Waktu</th><th class="Aksi">Aksi</th></tr>
+      </thead>
+      <tbody id="logTabel"></tbody>
+    </table>
+
+  <div style="margin-top:10px;">
+    <button onclick="hitungLog()">Hitung</button>
+    <button class="outline" onclick="resetLog()">Reset</button>
+  </div>
+  </div>
+
+  <!-- Hasil -->
+  <div class="card">
+    <div class="stats">
+      <div class="box">Total Pemakaian (kWh)<div id="kwh" class="num">0</div></div>
+      <div class="box">Total Tagihan<div id="tagihan" class="num">Rp 0</div></div>
+      <div class="box">Paling Boros<div id="boros" class="num">-</div></div>
+      <div class="box">Potensi Hemat<div id="hemat" class="num">Rp 0</div></div>
+    </div>
+
+    <canvas id="grafik" height="140" style="margin-top:20px;"></canvas>
+
+    <h3 style="margin-top:16px">Saran</h3>
+    <ul id="rek"></ul>
+    <button onclick="generatePDF()">Cetak Laporan</button>
+    <button onclick="generateStruk()">Cetak Struk</button>
+    <button class="outline" onclick="saranNyata()">💡 Tips Hemat</button>
+
+  </div>
+
+</div>
+<!-- HELP BUTTON -->
+<div class="help-button" id="helpBtn">?</div>
+
+<!-- HELP POPUP -->
+<div class="help-popup" id="helpPopup">
+<div class="help-content">
+  <h2>Panduan Penggunaan</h2>
+  <div class="steps">
+    <div class="step">
+      <button class="step-header">PENTINGG!!!</button>
+      <div class="step-body">Untuk pengguna mobile, akses web melalui chrome dan aktifkan 'Situs Desktop' untuk tampilan yang lebih baik.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">1</span> ⚡ Pilih tarif listrik</button>
+      <div class="step-body">Pilih tarif listrik sesuai golongan PLN sebelum menambahkan peralatan.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">2</span> ➕ Tambah peralatan</button>
+      <div class="step-body">Klik tombol "+Tambah" lalu isi data peralatan sesuai kebutuhan.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">3</span> 📝 Isi data peralatan</button>
+      <div class="step-body">Masukkan nama, watt, dan jumlah sesuai barang elektronik.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">4</span> 📅 Catat harian</button>
+      <div class="step-body">Gunakan tombol "Catat" untuk menambahkan pemakaian harian.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">5</span> ✏️ Edit catatan</button>
+      <div class="step-body">Gunakan tombol "Edit" di kolom aksi untuk memperbaiki data catatan harian.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">6</span> 📊 Hitung hasil akhir</button>
+      <div class="step-body">Klik tombol "Hitung" untuk melihat total kWh dan tagihan.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">7</span> 💡 Lihat hasil</button>
+      <div class="step-body">Hasil perhitungan akan muncul di bagian bawah halaman.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">8</span> 🧾 Cetak laporan</button>
+      <div class="step-body">Gunakan tombol "Cetak Laporan" untuk menghasilkan PDF berisi detail penggunaan listrik.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">9</span> 🧾 Cetak struk</button>
+      <div class="step-body">Gunakan tombol "Cetak Struk" untuk mencetak laporan dalam bentuk struk dengan layout rapi dan sejajar.</div>
+    </div>
+    <div class="step">
+      <button class="step-header"><span class="num">10</span> 🔄 Reset penggunaan</button>
+      <div class="step-body">Gunakan tombol "Reset" untuk memulai catatan baru dibulan/tahun berikutnya.</div>
+    </div>
+  </div>
+  <button id="closeHelp">Tutup</button>
+</div>
+</div>
+
+<script src="kaldif.js"></script>
+<div id="toast"></div>
+
+<div id="modalEdit" class="modal hidden">
+  <div class="modal-box">
+    <h3>Edit Catatan</h3>
+
+    <label>Nama Barang</label>
+    <input id="editNama" placeholder="Nama">
+
+    <label>Daya (Watt)</label>
+    <input id="editWatt" type="number">
+
+    <label>Jumlah</label>
+    <input id="editJumlah" type="number">
+
+    <label>Waktu Pemakaian</label>
+    <div class="time-picker">
+      <select id="editJam"></select> :
+      <select id="editMenit"></select>
+    </div>
+
+    <div class="modal-btn">
+      <button class="btn-primary" onclick="simpanEdit()">💾 Simpan</button>
+      <button onclick="tutupModal()">Batal</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

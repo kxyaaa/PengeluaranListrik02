@@ -1,0 +1,803 @@
+:root {
+  --primary: #1a3552;
+  --primary-light: #4c75b5;
+  --accent: #22d3ee;
+  --success: #22c55e;
+  --danger: #ef4444;
+
+  --glass-bg: rgba(255,255,255,0.65);
+  --glass-border: rgba(255,255,255,0.35);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* ===== BACKGROUND (Gray Mist + Navy → Pastel Blue) ===== */
+body {
+  margin: 0;
+  background: 
+    radial-gradient(110% 60% at 50% 0%, rgba(200,203,210,0.45), transparent 70%),
+    linear-gradient(160deg, #0f1c2e 0%, #1a3552 35%, #4d78b6 70%, #dce8ff 100%);
+  color: #1a1d21;
+}
+
+/* ===== CONTAINER ===== */
+.container {
+  max-width: 1080px;
+  margin: auto;
+  padding: 28px;
+}
+
+/* ===== TITLES ===== */
+h1 {
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    var(--accent),
+    #ffffff
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.sub {
+  opacity: .85;
+  font-weight: 500;
+}
+
+
+/* ===== CARD ===== */
+.card {
+  background: var(--glass-bg);
+  border-radius: 22px;
+  padding: 24px;
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 10px 30px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255,255,255,.6);
+  margin: 20px 0;
+  transition: all .35s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.12),
+    inset 0 1px 0 rgba(255,255,255,.7);
+}
+
+
+/* ===== INPUTS ===== */
+input, select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d2d4d9;
+  border-radius: 12px;
+  margin-top: 8px;
+  background: #f8f9fb;
+  transition: .25s;
+}
+input:focus, select:focus {
+  border-color: #5e8fd6;
+  box-shadow: 0 0 8px rgba(94,143,214,.25);
+  outline: none;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f3238;
+}
+
+/* ===== TABLE ===== */
+table {
+  width: 100%;
+  margin-top: 16px;
+  border-collapse: collapse;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.05);
+}
+
+th, td {
+  padding: 14px;
+  border-bottom: 1px solid #eceef1;
+  font-size: 14px;
+}
+
+/* Header Gradient — navy → soft blue */
+th {
+  background: linear-gradient(120deg, #0f1c2e, #2a3d59, #6a8dc7);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: .3px;
+}
+
+tr:hover td {
+  background: #eff4ff;
+  transition: .25s;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  background: linear-gradient(135deg, #1a3552, #4c75b5);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 14px;
+  font-weight: 600;
+  transition: all .25s ease;
+}
+button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(30,55,83,.3);
+}
+
+/* Outline Button */
+.outline {
+  background: transparent;
+  color: #1a3552;
+  border: 2px solid #1a3552;
+  margin-left: 8px;
+}
+.outline:hover {
+  background: #1a3552;
+  color: #fff;
+}
+
+/* ===== STATS / BOXES ===== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+#boros {
+  color: #ef4444; /* merah */
+  font-weight: 700;
+}
+
+#hemat {
+  color: #22c55e; /* hijau */
+  font-weight: 700;
+}
+
+.box {
+  background: #ffffffcc;
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid #e3e5eb;
+  backdrop-filter: blur(6px);
+  transition: all .25s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+
+  /* ===== STEP 4: SHIMMER EFFECT ===== */
+  position: relative;
+  overflow: hidden;
+}
+
+.box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(0,0,0,.08);
+}
+
+/* efek kilatan cahaya */
+.box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,.45),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform .6s ease;
+}
+
+.box:hover::after {
+  transform: translateX(100%);
+}
+
+
+.num {
+  font-weight: 700;
+  font-size: 22px;
+  background: linear-gradient(90deg, #1a3552, #4d75b3);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-top: 8px;
+}
+
+/* ==== HELP BUTTON ==== */
+.help-button {
+    position: fixed;
+    top: 22px;
+    right: 22px;
+    width: 46px;
+    height: 46px;
+    background: #d2d4d9;
+    color: #000000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    transition: 0.2s ease;
+    z-index: 9999;
+}
+
+.help-button:hover {
+    transform: scale(1.12);
+}
+
+/* ==== POPUP HELP ==== */
+.help-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+
+.help-content {
+    background: #fff;
+    width: 320px;
+    padding: 25px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    animation: popupFade 0.25s ease;
+}
+
+.help-content button {
+    margin-top: 14px;
+    padding: 10px 18px;
+    background: #aaaaaa;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+/* Animasi */
+@keyframes popupFade {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== KOLOM AKSI DI TABEL ===== */
+table th.aksi, table td.aksi {
+  width: 120px;        /* lebar pas untuk tombol Edit + Hapus */
+  text-align: center;  /* tombol rapi di tengah */
+  white-space: nowrap; /* cegah teks turun ke bawah */
+}
+
+table td.aksi button {
+  margin: 2px;
+  padding: 6px 10px;   /* tombol lebih kecil */
+  font-size: 12px;     /* font tombol lebih kecil */
+}
+
+/* ===== TOMBOL HAPUS TRANSPARAN ===== */
+button.hapus {
+  background: transparent;
+  color: #1a3552;            /* merah biar tegas */
+  border: 2px solid #1a3552; /* outline merah */
+  margin-left: 6px;
+  padding: 6px 10px;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+button.hapus:hover {
+  background: #1a3552;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  /* Container tetap padding kecil */
+  .container {
+    padding: 14px;
+  }
+
+  /* Tabel scroll horizontal */
+  table {
+    display: block;
+    width: auto; /* jangan paksa 100% */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  th, td {
+    white-space: nowrap;
+    min-width: 80px;
+    font-size: 14px; /* tetap ukuran desktop */
+  }
+
+  /* Step card scroll horizontal */
+  .steps {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .step {
+    flex: 0 0 auto;
+    width: 320px; /* ukuran desktop */
+    margin-right: 14px;
+  }
+
+  /* Stats box tetap grid 2 kolom */
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tombol tetap ukuran desktop */
+  button {
+    padding: 10px 18px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+}
+
+/* ===== HELP LIST ===== */
+.help-list {
+  text-align: left;
+  margin: 0;
+  padding: 0 0 0 18px;
+  list-style: none;
+}
+
+.help-list li {
+  margin: 8px 0;
+  font-size: 14px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+}
+
+.help-content {
+  max-height: 70vh;   /* maksimal 70% tinggi layar */
+  overflow-y: auto;   /* kalau panjang, bisa scroll */
+}
+
+/* ===== STEP ACCORDION STYLE ===== */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.step {
+  border: 1px solid #e1e3e8;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 8px rgba(0,0,0,.05);
+}
+
+.step-header {
+  width: 100%;
+  background: linear-gradient(135deg, #1a3552, #4c75b5);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+}
+
+.step-header .num {
+  background: #fff;
+  color: #1a3552;
+  font-weight: 700;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.step-body {
+  display: none;
+  padding: 12px 16px;
+  background: #f8f9fb;
+  font-size: 13px;
+  line-height: 1.4;
+  animation: slideDown 0.3s ease;
+}
+
+/* Animasi muncul */
+@keyframes slideDown {
+  from {opacity: 0; transform: translateY(-5px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.step-body {
+  display: none;
+  padding: 14px 18px;
+  font-size: 14px;
+  line-height: 1.5;
+  animation: slideDown 0.3s ease;
+  border-top: 1px solid #eceef1;
+
+  /* Background lebih menarik */
+  background: linear-gradient(135deg, #fdfbfb, #ebedee); /* abu pastel */
+  /* bisa diganti variasi lain: */
+  /* background: linear-gradient(135deg, #e0f7fa, #f1f8e9);  biru muda → hijau pastel */
+  /* background: linear-gradient(135deg, #fff3e0, #fce4ec);  peach → pink pastel */
+}
+
+#toast {
+  position: fixed;
+  top: 20px;        /* posisi di kanan atas */
+  right: 20px;
+  min-width: 280px;
+  background: #e74c3c; /* merah tegas untuk warning */
+  color: #fff;
+  padding: 16px 22px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-20px); /* animasi dari atas */
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+#toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.steps .step:first-child .step-header {
+  text-align: center;   /* teks di tengah */
+  font-weight: bold;    /* biar lebih tegas */
+  font-size: 18px;      /* opsional, biar lebih besar */
+  justify-content: center; /* kalau pakai flex */
+}
+
+/* ===== MANUAL TIME PICKER ===== */
+.time-picker {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: #f8f9fb;
+  border: 1px solid #d2d4d9;
+  border-radius: 10px;
+  padding: 4px 8px;
+}
+
+.time-picker select {
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.time-picker select:focus {
+  outline: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.modal.hidden { display: none; }
+
+.modal-box {
+  background: #fff;
+  width: 320px;
+  padding: 20px;
+  border-radius: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.modal-box h3 {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.modal-box label {
+  font-size: 13px;
+  opacity: .7;
+}
+
+.modal-box input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.modal-btn {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.modal-btn button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #4f46e5;
+  color: white;
+}
+
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.2);
+  opacity: 0;
+  transition: .25s;
+}
+
+button:hover::after {
+  opacity: 1;
+}
+
+.num {
+  animation: pop .4s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+#rek li {
+  margin: 8px 0;
+  padding-left: 6px;
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+
+  /* ===== GLOBAL ===== */
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .sub {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  /* ===== CARD ===== */
+  .card {
+    padding: 16px;
+    margin: 14px 0;
+  }
+
+  /* ===== STATS JADI 1 KOLOM ===== */
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .box {
+    padding: 14px;
+  }
+
+  .num {
+    font-size: 20px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tr {
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.08);
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border: none;
+    font-size: 13px;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    opacity: .7;
+  }
+
+}
+
+@media (max-width: 480px) {
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .outline {
+    margin-left: 0;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-button {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .help-content {
+    width: 90%;
+    max-height: 80vh;
+  }
+}
+
+/* ===== MOBILE SAFE MODE (CHROME ANDROID) ===== */
+@media (max-width: 900px) {
+
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .card,
+  .box {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #ffffff !important;
+    box-shadow: none !important;
+  }
+
+  .box::after {
+    display: none !important;
+  }
+
+  .card:hover,
+  .box:hover,
+  button:hover {
+    transform: none !important;
+  }
+}
+
+/* ===== MOBILE INPUT CLEAN (AMAN CHROME HP) ===== */
+@media (max-width: 480px) {
+
+  /* Baris tabel jadi kartu rapi */
+  tr {
+    display: block;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  }
+
+  td {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 6px 0;
+    font-size: 14px;
+  }
+
+  td::before {
+    font-size: 12px;
+    opacity: .7;
+  }
+
+  /* Input & select full width */
+  input,
+  select {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 10px;
+  }
+
+  /* Time picker lebih ringkas */
+  .time-picker {
+    width: 100%;
+    justify-content: space-between;
+    padding: 6px 10px;
+  }
+
+  .time-picker select {
+    font-size: 14px;
+    min-width: 70px;
+    text-align: center;
+  }
+
+  /* Tombol aksi satu kolom */
+  td.aksi,
+  td[data-label="Aksi"] {
+    display: block;
+    margin-top: 10px;
+  }
+
+  td.aksi button,
+  td[data-label="Aksi"] button {
+    width: 100%;
+    margin: 4px 0;
+  }
+
+  /* Header tabel disembunyikan */
+  thead {
+    display: none;
+  }
+}
+
