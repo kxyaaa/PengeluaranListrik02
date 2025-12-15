@@ -801,3 +801,24 @@ button:hover::after {
   }
 }
 
+/* ===== RAPAPI TOMBOL HAPUS DI TABEL INPUT (MOBILE) ===== */
+@media (max-width: 480px) {
+
+  /* kolom Aksi di tabel input */
+  #tabel td[data-label="Aksi"] {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* tombol Hapus */
+  #tabel td[data-label="Aksi"] button {
+    width: auto !important;   /* cegah full width */
+    padding: 6px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+}
+
+
