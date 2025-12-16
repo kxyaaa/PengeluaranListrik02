@@ -801,3 +801,9 @@ button:hover::after {
   }
 }
 
+#grafik {
+  display: block;
+  width: 100%;
+  height: 300px;   /* ✅ ukuran PAS seperti di gambar */
+  margin-top: 20px;
+}
