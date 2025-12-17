@@ -807,3 +807,14 @@ button:hover::after {
   height: 300px;   /* ✅ ukuran PAS seperti di gambar */
   margin-top: 20px;
 }
+
+/* Styling khusus rumus di panduan */
+.step-body pre {
+  font-size: 13px;        /* perkecil sedikit */
+  overflow-x: auto;      /* bisa scroll ke samping */
+  white-space: nowrap;   /* tetap satu baris */
+  background: #f5f7fa;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-top: 6px;
+}
